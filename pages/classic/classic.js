@@ -1,33 +1,41 @@
 import { ClassicModel } from "../../models/classic.js";
+import { LikeModel } from "../../models/like";
 
-let classic = new ClassicModel();
-
+let classicModel = new ClassicModel();
+let likeModel = new LikeModel();
 // pages/classic/classic.js
 Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    classic: null,
+    latest: true,
+    first: false
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    classic.getLatest(resp => {
-      this.setData({
-        classic: resp
-      });
+    classicModel.getLatest(resp => {
+      this.setData({ classic: resp });
     });
+  },
 
-    // wx.request({
-    //   url: "http://bl.7yue.pro/v1/classic/latest",
-    //   header: {
-    //     appkey: "AmYiUAfV5l88OjyM"
-    //   },
-    //   success: resp => {
-    //     console.log(resp);
-    //   }
-    // });
+  onLike: function(event) {
+    console.log(event);
+    let behavior = event.detail.behavior;
+    likeModel.like(behavior, this.data.classic.id, this.data.classic.type);
+  },
+
+  onNext: function(event) {},
+
+  onPrevious: function(event) {
+    let index = this.data.classic.index;
+    classicModel.getPrevious(index, resp => {
+      console.log(resp);
+    });
   },
 
   /**

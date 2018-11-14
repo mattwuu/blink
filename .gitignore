@@ -1,4 +1,3 @@
-./vscode
+/.vscode
 project.config.json
-*.png
-images/
+config.js

@@ -22,7 +22,7 @@ class HTTP {
       success: resp => {
         let code = resp.statusCode.toString();
         if (code.startsWith("2")) {
-          params.success(resp.data);
+          params.success && params.success(resp.data);
         } else {
           let error_code = resp.data.error_code;
           this._show_error(error_code);

@@ -1,1 +1,8 @@
-<m-like like="{{classic.like_status}}" count="{{classic.fav_nums}}"/>
+<view class="container">
+    <view class="header">
+        <m-epsoide class="epsoide" index="{{classic.index}}" />
+        <m-like class="like" bind:like="onLike" like="{{classic.like_status}}" count="{{classic.fav_nums}}" />
+    </view>
+    <m-movie img="{{classic.image}}" content="{{classic.content}}" />
+    <m-navi bind:left="onNext" bind:right="onPrevious" class="navi" title="{{classic.title}}" first="{{first}}" latest="{{latest}}" />
+</view>
