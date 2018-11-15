@@ -11,7 +11,6 @@ Component({
         this.setData({
           _index: val
         });
-        gi;
       }
     }
   },
