@@ -4,6 +4,6 @@ let classicBeh = Behavior({
     content: String,
     hidden: Boolean
   }
-});
+})
 
-export { classicBeh };
+export { classicBeh }

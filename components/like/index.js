@@ -16,32 +16,32 @@ Component({
    * 组件的初始数据
    */
   data: {
-    yes_url: "images/like.png",
-    no_url: "images/like@dis.png"
+    yes_url: 'images/like.png',
+    no_url: 'images/like@dis.png'
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    onLike: function(event) {
-      let like = this.properties.like;
-      let count = this.properties.count;
+    onLike: function() {
+      let like = this.properties.like
+      let count = this.properties.count
 
-      count = like ? count - 1 : count + 1;
+      count = like ? count - 1 : count + 1
       this.setData({
         count: count,
         like: !like
-      });
+      })
 
-      let behavior = this.properties.like ? "like" : "cancel";
+      let behavior = this.properties.like ? 'like' : 'cancel'
       this.triggerEvent(
-        "like",
+        'like',
         {
           behavior: behavior
         },
         {}
-      );
+      )
     }
   }
-});
+})

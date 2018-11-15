@@ -1,0 +1,24 @@
+{
+  "name": "blink",
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^3.12.1"
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattwuu/blink.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattwuu/blink/issues"
+  },
+  "homepage": "https://github.com/mattwuu/blink#readme"
+}

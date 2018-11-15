@@ -1,4 +1,4 @@
-import { classicBeh } from "../classic-beh.js";
+import { classicBeh } from '../classic-beh.js'
 // components/classic/movie/index.js
 Component({
   behaviors: [classicBeh],
@@ -16,4 +16,4 @@ Component({
    * 组件的方法列表
    */
   methods: {}
-});
+})

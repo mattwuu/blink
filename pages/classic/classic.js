@@ -1,8 +1,8 @@
-import { ClassicModel } from "../../models/classic.js";
-import { LikeModel } from "../../models/like";
+import { ClassicModel } from '../../models/classic.js'
+import { LikeModel } from '../../models/like'
 
-let classicModel = new ClassicModel();
-let likeModel = new LikeModel();
+let classicModel = new ClassicModel()
+let likeModel = new LikeModel()
 // pages/classic/classic.js
 Page({
   /**
@@ -19,41 +19,40 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function() {
     classicModel.getLatest(resp => {
       this.setData({
         classic: resp,
         likeCount: resp.fav_nums,
         likeStatus: resp.like_status
         // ...resp // 扩展运算符
-      });
-    });
+      })
+    })
   },
 
   onLike: function(event) {
-    console.log(event);
-    let behavior = event.detail.behavior;
-    likeModel.like(behavior, this.data.classic.id, this.data.classic.type);
+    let behavior = event.detail.behavior
+    likeModel.like(behavior, this.data.classic.id, this.data.classic.type)
   },
 
-  onNext: function(event) {
-    this._updateClassic("next");
+  onNext: function() {
+    this._updateClassic('next')
   },
 
-  onPrevious: function(event) {
-    this._updateClassic("previous");
+  onPrevious: function() {
+    this._updateClassic('previous')
   },
 
   _updateClassic: function(nextOrPrevious) {
-    let index = this.data.classic.index;
+    let index = this.data.classic.index
     classicModel.getClassic(index, nextOrPrevious, resp => {
-      this._getLikeStatus(resp.id, resp.type);
+      this._getLikeStatus(resp.id, resp.type)
       this.setData({
         classic: resp,
         latest: classicModel.isLatest(resp.index),
         first: classicModel.isFirst(resp.index)
-      });
-    });
+      })
+    })
   },
 
   _getLikeStatus: function(artID, category) {
@@ -61,8 +60,8 @@ Page({
       this.setData({
         likeCount: resp.fav_nums,
         likeStatus: resp.like_status
-      });
-    });
+      })
+    })
   },
 
   /**
@@ -99,4 +98,4 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {}
-});
+})

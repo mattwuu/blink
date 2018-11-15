@@ -13,26 +13,26 @@ Component({
    * 组件的初始数据
    */
   data: {
-    disLeftSrc: "images/triangle.dis@left.png",
-    leftSrc: "images/triangle@left.png",
-    disRightSrc: "images/triangle.dis@right.png",
-    rightSrc: "images/triangle@right.png"
+    disLeftSrc: 'images/triangle.dis@left.png',
+    leftSrc: 'images/triangle@left.png',
+    disRightSrc: 'images/triangle.dis@right.png',
+    rightSrc: 'images/triangle@right.png'
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    onLeft: function(event) {
+    onLeft: function() {
       if (!this.properties.latest) {
-        this.triggerEvent("left", {}, {});
+        this.triggerEvent('left', {}, {})
       }
     },
 
-    onRight: function(event) {
+    onRight: function() {
       if (!this.properties.first) {
-        this.triggerEvent("right", {}, {});
+        this.triggerEvent('right', {}, {})
       }
     }
   }
-});
+})

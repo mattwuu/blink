@@ -1,6 +1,6 @@
-import { classicBeh } from "../classic-beh.js";
+import { classicBeh } from '../classic-beh.js'
 
-const mMgr = wx.getBackgroundAudioManager();
+const mMgr = wx.getBackgroundAudioManager()
 
 Component({
   behaviors: [classicBeh],
@@ -16,16 +16,16 @@ Component({
    */
   data: {
     playing: false,
-    pauseSrc: "images/player@pause.png",
-    playSrc: "images/player@play.png"
+    pauseSrc: 'images/player@pause.png',
+    playSrc: 'images/player@play.png'
   },
 
-  attached: function(event) {
-    this._recoverStatus();
-    this._monitorSwitch();
+  attached: function() {
+    this._recoverStatus()
+    this._monitorSwitch()
   },
 
-  detached: function(event) {
+  detached: function() {
     // mMgr.stop();
   },
 
@@ -33,17 +33,17 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onPlay: function(event) {
+    onPlay: function() {
       if (!this.data.playing) {
         this.setData({
           playing: true
-        });
-        mMgr.src = this.properties.src;
+        })
+        mMgr.src = this.properties.src
       } else {
         this.setData({
           playing: false
-        });
-        mMgr.pause();
+        })
+        mMgr.pause()
       }
     },
 
@@ -51,30 +51,30 @@ Component({
       if (mMgr.paused) {
         this.setData({
           playing: false
-        });
-        return;
+        })
+        return
       }
       if (mMgr.src == this.properties.src) {
         this.setData({
           playing: true
-        });
+        })
       }
     },
 
     _monitorSwitch: function() {
       mMgr.onPlay(() => {
-        this._recoverStatus();
-      });
+        this._recoverStatus()
+      })
       mMgr.onPause(() => {
-        this._recoverStatus();
-      });
+        this._recoverStatus()
+      })
       mMgr.onStop(() => {
-        this._recoverStatus();
-      });
+        this._recoverStatus()
+      })
       mMgr.onEnded(() => {
-        this._recoverStatus();
-      });
+        this._recoverStatus()
+      })
     }
   } //end of methods
   // end of Component
-});
+})

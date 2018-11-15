@@ -1,4 +1,4 @@
-import { classicBeh } from "../classic-beh.js";
+import { classicBeh } from '../classic-beh.js'
 
 // components/classic/essay/index.js
 Component({
@@ -17,4 +17,4 @@ Component({
    * 组件的方法列表
    */
   methods: {}
-});
+})
