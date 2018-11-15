@@ -1,6 +1,6 @@
 <view class="container">
   <view class="header">
-    <m-epsoide class="epsoide" index="{{classic.index}}" />
+    <m-episode class="episode" index="{{classic.index}}" />
     <m-like class="like" bind:like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
   </view>
   <m-movie hidden="{{classic.type!=100}}" img="{{classic.image}}" content="{{classic.content}}" />
