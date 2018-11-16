@@ -1,1 +1,21 @@
-<m-book book="{{books[0]}}"></m-book>
+<!-- <block wx:for="{{books}}">
+  <m-book book="{{item}}"></m-book>
+</block> -->
+<view>
+  <view class="container">
+    <view class="header">
+      <view class='box' bind:tap="onActivateSearch">
+        <image src="/images/icon/search.png" />
+        <text>搜索书籍</text>
+      </view>
+    </view>
+    <view class="sub-container">
+      <image class="head-img" src="/images/book/quality.png" />
+      <view class="books-container">
+        <block wx:key="id" wx:for="{{books}}">
+          <m-book book="{{item}}" class="book" />
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

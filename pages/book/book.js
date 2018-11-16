@@ -16,8 +16,6 @@ Page({
    */
   onLoad: function() {
     bookModel.getHotList().then(resp => {
-      console.log(resp)
-      // let that = this
       this.setData({
         books: resp
       })
