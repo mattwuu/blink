@@ -7,28 +7,32 @@ const tips = {
 }
 
 class HTTP {
-  request(params) {
-    if (!params.method) {
-      params.method = 'GET'
-    }
+  request({ url, data = {}, method = 'GET' }) {
+    return new Promise((resolve, reject) => {
+      this._request(url, resolve, reject, data, method)
+    })
+  }
+  _request(url, resolve, reject, data = {}, method = 'GET') {
     wx.request({
-      url: config.api_base_url + params.url,
-      method: params.method,
-      data: params.data,
+      url: config.api_base_url + url,
+      method: method,
+      data: data,
       header: {
         'content-type': 'application/json',
         appkey: config.appkey
       },
       success: resp => {
-        let code = resp.statusCode.toString()
+        const code = resp.statusCode.toString()
         if (code.startsWith('2')) {
-          params.success && params.success(resp.data)
+          resolve(resp.data)
         } else {
-          let error_code = resp.data.error_code
+          reject()
+          const error_code = resp.data.error_code
           this._show_error(error_code)
         }
       },
       fail: () => {
+        reject()
         this._show_error(1)
       }
     })
