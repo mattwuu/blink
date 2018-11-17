@@ -1,14 +1,23 @@
 import { KeywordModel } from '../../models/keyword.js'
 import { BookModel } from '../../models/book.js'
+import { paginationBev } from '../behaviors/pagination.js'
 
 const keywordModel = new KeywordModel()
 const bookModel = new BookModel()
 
 Component({
+  // 行为
+  behaviors: [paginationBev],
+
   /**
    * 组件的属性列表
    */
-  properties: {},
+  properties: {
+    more: {
+      type: String,
+      observer: 'loadMore'
+    }
+  },
 
   /**
    * 组件的初始数据
@@ -16,9 +25,10 @@ Component({
   data: {
     historyWords: [],
     hotWords: [],
-    dataArray: [],
     searching: false,
-    q:''
+    q: '',
+    loading: false,
+    loadingCenter: false
   },
 
   attached() {
@@ -39,25 +49,92 @@ Component({
   methods: {
     onCancel() {
       this.triggerEvent('cancel', {}, {})
+      this.initialize()
     },
 
     onDelete() {
+      this._closeResult()
+      this.initialize()
+
       this.setData({
-        searching: false
+        historyWords: keywordModel.getHistory()
       })
     },
 
     onConfirm(event) {
-      this.setData({
-        searching: true
-      })
+      this._showResult()
+      this._showLoadingCenter()
       const q = event.detail.value || event.detail.text
       bookModel.search(0, q).then(resp => {
+        this.setMoreData(resp.books)
+        this.setTotal(resp.total)
         this.setData({
-          dataArray: resp.books,
           q
         })
         keywordModel.addToHistory(q)
+        this._hideLoadingCenter()
+      })
+    },
+
+    loadMore() {
+      if (!this.data.q) {
+        return
+      }
+      if (this._isLocked()) {
+        return
+      }
+      if (this.hasMore()) {
+        this._locked()
+        bookModel.search(this.getCurrentStart(), this.data.q).then(
+          resp => {
+            this.setMoreData(resp.books)
+            this._unlocked()
+          },
+          () => {
+            this._unlocked()
+          }
+        )
+      }
+    },
+
+    _isLocked() {
+      return this.data.loading ? true : false
+    },
+
+    _locked() {
+      this.setData({
+        loading: true
+      })
+    },
+
+    _unlocked() {
+      this.setData({
+        loading: false
+      })
+    },
+
+    _showResult() {
+      this.setData({
+        searching: true
+      })
+    },
+
+    _closeResult() {
+      this.setData({
+        searching: false,
+        q:''
+      })
+    },
+
+    _showLoadingCenter() {
+      this.setData({
+        loadingCenter: true
+      })
+    },
+
+    _hideLoadingCenter() {
+      this.setData({
+        loadingCenter: false
       })
     }
   }

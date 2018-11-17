@@ -1,11 +1,8 @@
-/* components/search/search-cmp.wxss */
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  /* padding-left:15px; */ /* padding-right:15px; */
 }
 
 .header {
@@ -140,7 +137,6 @@
   text-align: center;
   position: absolute;
   top: 50%;
-  /* left: 275rpx; */
 }
 
 .test {
