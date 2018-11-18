@@ -1,11 +1,12 @@
 {
   "usingComponents": {
+    "m-navi": "/components/navi/index",
+    "m-episode": "/components/episode/index",
     "m-like": "/components/like/index",
     "m-movie": "/components/classic/movie/index",
     "m-music": "/components/classic/music/index",
     "m-essay": "/components/classic/essay/index",
-    "m-episode": "/components/episode/index",
-    "m-navi": "/components/navi/index",
     "m-img-btn": "/components/image-button/index"
-  }
+  },
+  "disableScroll": true
 }

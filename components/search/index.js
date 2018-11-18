@@ -80,37 +80,21 @@ Component({
       if (!this.data.q) {
         return
       }
-      if (this._isLocked()) {
+      if (this.isLocked()) {
         return
       }
       if (this.hasMore()) {
-        this._locked()
+        this.locked()
         bookModel.search(this.getCurrentStart(), this.data.q).then(
           resp => {
             this.setMoreData(resp.books)
-            this._unlocked()
+            this.unlocked()
           },
           () => {
-            this._unlocked()
+            this.unlocked()
           }
         )
       }
-    },
-
-    _isLocked() {
-      return this.data.loading ? true : false
-    },
-
-    _locked() {
-      this.setData({
-        loading: true
-      })
-    },
-
-    _unlocked() {
-      this.setData({
-        loading: false
-      })
     },
 
     _showResult() {

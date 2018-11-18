@@ -46,9 +46,9 @@
   </view>
   <view class="like-container">
     <m-like bind:like="onLike" class="like" like="{{likeStatus}}" count="{{likeCount}}" />
-    <img-btn-cmp class="share-btn" open-type="share">
+    <m-img-btn class="share-btn" open-type="share">
       <image class="share" slot="img" src="/images/icon/share.png" />
-    </img-btn-cmp>
+    </m-img-btn>
   </view>
 </view>
 <view wx:if="{{posting}}" class="posting-container">

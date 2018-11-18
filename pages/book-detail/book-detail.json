@@ -2,6 +2,7 @@
   "usingComponents": {
     "m-tag": "/components/tag/index",
     "m-like": "/components/like/index",
-    "m-mask": "/components/mask/index"
+    "m-mask": "/components/mask/index",
+    "m-img-btn": "/components/image-button/index"
   }
 }

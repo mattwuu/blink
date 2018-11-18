@@ -8,7 +8,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    src: String
+    src: String,
+    musicTitle: String
   },
 
   /**
@@ -39,6 +40,7 @@ Component({
           playing: true
         })
         mMgr.src = this.properties.src
+        mMgr.title = this.properties.musicTitle
       } else {
         this.setData({
           playing: false

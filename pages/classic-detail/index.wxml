@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="header">
+    <m-episode class="episode" index="{{classic.index}}" />
+    <view class="like-container">
+      <m-like bind:like="onLike" class="like" like="{{like}}" count="{{count}}" />
+      <m-img-btn class="share-btn" open-type="share">
+        <image class="share" slot="img" src="/images/icon/share.png" />
+      </m-img-btn>
+    </view>
+  </view>
+  <m-movie wx:if="{{classic.type==100}}" img="{{classic.image}}" content="{{classic.content}}" />
+  <m-music wx:if="{{classic.type==200}}" img="{{classic.image}}" content="{{classic.content}}" src="{{classic.url}}" musicTitle="{{classic.title}}" />
+  <m-essay wx:if="{{classic.type==300}}" img="{{classic.image}}" content="{{classic.content}}" />
+  <!-- <navi-cmp class="navi" latest="{{latest}}" first="{{first}}" catch:left="onNext" catch:right="onPrevious" title="{{classic.title}}" /> -->
+</view>

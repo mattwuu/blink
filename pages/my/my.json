@@ -1,1 +1,8 @@
-{}
+{
+  "usingComponents":{
+    "m-img-btn": "/components/image-button/index",
+    "m-tag": "/components/tag/index",
+    "m-preview": "/components/preview/index"
+  },
+  "backgroundColor":"#f5f5f5"
+}
